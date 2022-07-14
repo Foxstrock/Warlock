@@ -27,6 +27,15 @@ public class BookController {
         }
     }
 
+    @GetMapping("/getbookdetailsbyisbn/{isbn}")
+    public Book getBookDetailsByIsbn(@PathVariable("isbn") String isbn){
+        if(bookRepository.getBookByIsbn(isbn).isPresent()) {
+            return bookRepository.getBookByIsbn(isbn).get();
+        }else{
+            return new Book();
+        }
+    }
+
     @PostMapping("/addnewbook")
     public Book addnewbook(@RequestBody Book book){
         return bookRepository.insert(book);
