@@ -1,6 +1,5 @@
 package com.warlock.warlock.Book;
 
-import jdk.nashorn.internal.objects.annotations.Property;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
