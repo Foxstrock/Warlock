@@ -21,7 +21,9 @@ public class Book {
     @Field(name = "PREZZO ORIGINALE")
     String prezzo;
 
-    public Book(String id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo) {
+    String linkImage;
+
+    public Book(String id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo, String linkImage) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -29,6 +31,7 @@ public class Book {
         this.scuola = scuola;
         this.isbn = isbn;
         this.prezzo = prezzo;
+        this.linkImage = linkImage;
     }
 
     public Book() {
@@ -88,5 +91,13 @@ public class Book {
 
     public void setPrezzo(String prezzo) {
         this.prezzo = prezzo;
+    }
+
+    public String getLinkImage() {
+        return linkImage;
+    }
+
+    public void setLinkImage(String linkImage) {
+        this.linkImage = linkImage;
     }
 }
