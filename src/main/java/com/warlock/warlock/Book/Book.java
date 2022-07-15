@@ -1,29 +1,28 @@
 package com.warlock.warlock.Book;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "Book")
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "Book")
 public class Book {
     @Id
     String id;
-    @Field(name = "MATERIA")
+    @Column(name = "MATERIA")
     String materia;
-    @Field(name = "TITOLO")
+    @Column(name = "TITOLO")
     String titolo;
-    @Field(name = "DISTRIBUTORE")
+    @Column(name = "DISTRIBUTORE")
     String distributore;
-    @Field(name = "SCUOLA")
+    @Column(name = "SCUOLA")
     String scuola;
-    @Field(name = "ISBN")
+    @Column(name = "ISBN")
     String isbn;
-    @Field(name = "PREZZO ORIGINALE")
+    @Column(name = "PREZZO ORIGINALE")
     String prezzo;
 
-    String linkImage;
-
-    public Book(String id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo, String linkImage) {
+    public Book(String id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -31,7 +30,6 @@ public class Book {
         this.scuola = scuola;
         this.isbn = isbn;
         this.prezzo = prezzo;
-        this.linkImage = linkImage;
     }
 
     public Book() {
@@ -91,13 +89,5 @@ public class Book {
 
     public void setPrezzo(String prezzo) {
         this.prezzo = prezzo;
-    }
-
-    public String getLinkImage() {
-        return linkImage;
-    }
-
-    public void setLinkImage(String linkImage) {
-        this.linkImage = linkImage;
     }
 }
