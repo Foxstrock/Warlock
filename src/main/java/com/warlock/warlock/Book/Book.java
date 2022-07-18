@@ -1,28 +1,30 @@
 package com.warlock.warlock.Book;
 
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "Book")
-public class Book {
+@Entity
+public class Book implements Serializable {
     @Id
-    String id;
-    @Column(name = "MATERIA")
+    @GeneratedValue
+    @Column(name = "idBook")
+    Integer id;
+    @Column(name = "materia")
     String materia;
-    @Column(name = "TITOLO")
+    @Column(name = "titolo")
     String titolo;
-    @Column(name = "DISTRIBUTORE")
+    @Column(name = "distributore")
     String distributore;
-    @Column(name = "SCUOLA")
+    @Column(name = "scuola")
     String scuola;
-    @Column(name = "ISBN")
+    @Column(name = "isbn")
     String isbn;
-    @Column(name = "PREZZO ORIGINALE")
+    @Column(name = "prezzoOriginale")
     String prezzo;
 
-    public Book(String id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo) {
+    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -35,11 +37,11 @@ public class Book {
     public Book() {
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

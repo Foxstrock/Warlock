@@ -19,7 +19,7 @@ public class BookController {
     }
 
     @GetMapping("/getbookdetails/{id}")
-    public Book getBookDetails(@PathVariable("id") String id){
+    public Book getBookDetails(@PathVariable("id") Integer id){
         if(bookRepository.findById(id).isPresent()) {
             return bookRepository.findById(id).get();
         }else{
@@ -38,7 +38,7 @@ public class BookController {
 
     @PostMapping("/addnewbook")
     public Book addnewbook(@RequestBody Book book){
-        return bookRepository.insert(book);
+        return bookRepository.save(book);
     }
 
     @PutMapping("/updatebook")
@@ -46,6 +46,6 @@ public class BookController {
         Book newBook = new Book();
         newBook = bookRepository.findById(book.id).get();
         newBook = book;
-        return bookRepository.insert(newBook);
+        return bookRepository.save(newBook);
     }
 }

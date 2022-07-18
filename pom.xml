@@ -11,7 +11,7 @@
     <groupId>com.warlock</groupId>
     <artifactId>Warlock</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Warlock</name>
     <description>Warlock</description>
     <properties>
@@ -45,8 +45,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version>
         </dependency>
-
 
     </dependencies>
 
