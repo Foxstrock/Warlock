@@ -26,11 +26,11 @@ public class Book implements Serializable {
     @Column(name = "isbn")
     String isbn;
     @Column(name = "prezzoOriginale")
-    double prezzo;
+    Double prezzo;
     @Column(name = "ImageString")
     String imageString;
 
-    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, double prezzo, String imageString) {
+    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, Double prezzo, String imageString) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -92,11 +92,11 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public double getPrezzo() {
+    public Double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(double prezzo) {
+    public void setPrezzo(Double prezzo) {
         this.prezzo = prezzo;
     }
 
