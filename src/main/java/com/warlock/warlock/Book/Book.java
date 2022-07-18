@@ -1,7 +1,7 @@
 package com.warlock.warlock.Book;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 import javax.persistence.*;
@@ -26,11 +26,11 @@ public class Book implements Serializable {
     @Column(name = "isbn")
     String isbn;
     @Column(name = "prezzoOriginale")
-    String prezzo;
+    double prezzo;
     @Column(name = "ImageString")
     String imageString;
 
-    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo, String imageString) {
+    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, double prezzo, String imageString) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -92,11 +92,11 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public String getPrezzo() {
+    public double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(String prezzo) {
+    public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
 
