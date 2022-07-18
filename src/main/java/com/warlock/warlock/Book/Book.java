@@ -1,6 +1,9 @@
 package com.warlock.warlock.Book;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +11,8 @@ import java.io.Serializable;
 @Entity
 public class Book implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     @Column(name = "idBook")
     Integer id;
     @Column(name = "materia")
@@ -23,8 +27,10 @@ public class Book implements Serializable {
     String isbn;
     @Column(name = "prezzoOriginale")
     String prezzo;
+    @Column(name = "ImageString")
+    String imageString;
 
-    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo) {
+    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, String prezzo, String imageString) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -32,6 +38,7 @@ public class Book implements Serializable {
         this.scuola = scuola;
         this.isbn = isbn;
         this.prezzo = prezzo;
+        this.imageString = imageString;
     }
 
     public Book() {
@@ -92,4 +99,13 @@ public class Book implements Serializable {
     public void setPrezzo(String prezzo) {
         this.prezzo = prezzo;
     }
+
+    public String getImageString() {
+        return imageString;
+    }
+
+    public void setImageString(String imageString) {
+        this.imageString = imageString;
+    }
+
 }
