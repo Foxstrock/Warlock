@@ -32,25 +32,10 @@ public class UserController {
     }
 
     @GetMapping("/getuserdetails/{id}")
-    public UserDto getUserDetails(@PathVariable("id") Integer id) {
-         User user = userRepository.findById(id).get();
+    public User getUserDetails(@PathVariable("id") Integer id) {
+        User user = userRepository.findById(id).get();
 
-         List<Transiction> listTransiction = translationRepository.findAllByIdUser(id);
-         List<Book> bookList = new ArrayList<Book>();
-
-         listTransiction.forEach(transiction->{
-             bookList.add(bookRepository.findById(transiction.getBook()).get());
-         });
-
-
-         UserDto dto = new UserDto();
-
-         dto.setId(user.getId());
-         dto.setName(user.getName());
-         dto.setSurname(user.getSurname());
-         dto.setBookList(bookList);
-
-         return dto;
+       return user;
     }
 
     @PostMapping("/addnewuser")
