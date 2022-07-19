@@ -11,7 +11,7 @@
     <groupId>com.warlock</groupId>
     <artifactId>Warlock</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>Warlock</name>
     <description>Warlock</description>
     <properties>
