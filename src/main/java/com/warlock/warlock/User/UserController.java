@@ -23,8 +23,6 @@ public class UserController {
     @Autowired
     TransictionRepository translationRepository;
 
-    @Autowired
-    BookRepository bookRepository;
 
     @GetMapping("/getalluser")
     public List<User> getAllUser(){
@@ -51,20 +49,5 @@ public class UserController {
        return userRepository.save(oldUser);
     }
 
-    @PostMapping("/addbooktouser/{idUser}/{idBook}")
-    public Transiction addBookTouser(@PathVariable("idUser")Integer idUser,@PathVariable("idBook")Integer idBook){
-        Transiction transiction = new Transiction();
 
-        transiction.setBook(idBook);
-        transiction.setUser(idUser);
-        transiction.setStatus(BookStatus.DISPONIBILE.toString());
-        transiction.setDataIns(Date.from(Instant.now()));
-
-        translationRepository.save(transiction);
-
-
-
-        return transiction;
-    }
-    
 }
