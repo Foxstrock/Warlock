@@ -1,9 +1,6 @@
 package com.warlock.warlock.Transiction;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.warlock.warlock.Book.Book;
-import com.warlock.warlock.User.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,19 +25,27 @@ public class Transiction implements Serializable {
     @Column(name = "status")
     String status;
 
+    @Column(name = "prezzoVendita")
+    Double prezzoVendita;
+
     @Column(name = "DataIns")
     Date DataIns;
 
     @Column(name = "DateUsc")
     Date DateUsc;
 
-    public Transiction(Integer idTransiction, Integer idBook, Integer idUser, String status, Date dataIns, Date dateUsc) {
+    @Column(name = "NamePrenotation")
+    String NamePrenotation;
+
+    public Transiction(Integer idTransiction, Integer idBook, Integer idUser, String status, Double prezzoVendita, Date dataIns, Date dateUsc, String namePrenotation) {
         this.idTransiction = idTransiction;
         this.idBook = idBook;
         this.idUser = idUser;
         this.status = status;
+        this.prezzoVendita = prezzoVendita;
         DataIns = dataIns;
         DateUsc = dateUsc;
+        NamePrenotation = namePrenotation;
     }
 
     public Transiction() {
@@ -54,7 +59,7 @@ public class Transiction implements Serializable {
         this.idTransiction = idTransiction;
     }
 
-    public Integer getBook() {
+    public Integer getidBook() {
         return idBook;
     }
 
@@ -62,7 +67,7 @@ public class Transiction implements Serializable {
         this.idBook = book;
     }
 
-    public Integer getUser() {
+    public Integer getidUser() {
         return idUser;
     }
 
@@ -92,5 +97,21 @@ public class Transiction implements Serializable {
 
     public void setDateUsc(Date dateUsc) {
         DateUsc = dateUsc;
+    }
+
+    public Double getPrezzoVendita() {
+        return prezzoVendita;
+    }
+
+    public void setPrezzoVendita(Double prezzoVendita) {
+        this.prezzoVendita = prezzoVendita;
+    }
+
+    public String getNamePrenotation() {
+        return NamePrenotation;
+    }
+
+    public void setNamePrenotation(String namePrenotation) {
+        NamePrenotation = namePrenotation;
     }
 }

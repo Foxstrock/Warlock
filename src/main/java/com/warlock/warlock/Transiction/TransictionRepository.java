@@ -9,9 +9,10 @@ public interface TransictionRepository extends JpaRepository<Transiction,Integer
 
     List<Transiction> findAllByIdUser(Integer idUser);
 
-    @Query(value = "SELECT idBook FROM Transiction WHERE idUser = ?1")
-    List<Integer> findBooksIdFromUserId(Integer idUser);
+    List<Transiction> findTransictionByIdUser(Integer idUser);
 
     @Query(value = "SELECT idUser FROM Transiction WHERE idBook = ?1")
     List<Integer> findUserIdFromBookId(Integer idBook);
+
+    List<Transiction> findTransictionByIdUserAndIdBook(Integer idCliente , Integer IdBook);
 }

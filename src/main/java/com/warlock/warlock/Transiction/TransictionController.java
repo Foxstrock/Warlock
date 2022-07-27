@@ -45,12 +45,14 @@ public class TransictionController {
 
     @GetMapping("/getbookfromuser/{id}")
     public List<Book> getBooksFromUser(@PathVariable("id") Integer id) {
-        List<Integer> idBookList = transictionRepository.findBooksIdFromUserId(id);
+        List<Transiction> transictionList = transictionRepository.findTransictionByIdUser(id);
         List<Book> books = new ArrayList<Book>();
 
-        idBookList.forEach(bookId ->{
-            books.add(bookRepository.findById(bookId).get());
+        transictionList.forEach( it -> {
+            Book book = new Book(bookRepository.findById(it.getidBook()).get(), it.getStatus(),it.idTransiction);
+            books.add(book);
         });
+
 
         return books;
     }
@@ -65,5 +67,29 @@ public class TransictionController {
         });
 
         return users;
+    }
+
+    @PutMapping("/updatetransiction")
+    public Transiction updateTransiction(@RequestBody Transiction tr){
+        Transiction newTr = transictionRepository.getReferenceById(tr.idTransiction);
+
+        newTr.setStatus(tr.status);
+        if(tr.status.equals("VENDUTO"))
+        newTr.setDateUsc(Date.from(Instant.now()));
+
+        newTr.setNamePrenotation(tr.getNamePrenotation());
+        newTr.setPrezzoVendita(tr.prezzoVendita);
+
+        return transictionRepository.save(newTr);
+    }
+
+    @GetMapping("/gettransictiondetails/{id}")
+    public Transiction getTransictionDetails(@PathVariable("id")Integer id) {
+        return transictionRepository.findById(id).get();
+    }
+
+    @GetMapping("/gettransictionbyids/{idUser}/{idBook}")
+    public List<Transiction> getTransictionsByidUsers(Integer idUser,Integer idBook){
+        return transictionRepository.findTransictionByIdUserAndIdBook(idUser,idBook);
     }
 }

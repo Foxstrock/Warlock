@@ -30,7 +30,13 @@ public class Book implements Serializable {
     @Column(name = "ImageString")
     String imageString;
 
-    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, Double prezzo, String imageString) {
+    @Transient
+    String status;
+
+    @Transient
+    Integer idTransiction;
+
+    public Book(Integer id, String materia, String titolo, String distributore, String scuola, String isbn, Double prezzo, String imageString, String status, Integer idTransiction) {
         this.id = id;
         this.materia = materia;
         this.titolo = titolo;
@@ -39,9 +45,24 @@ public class Book implements Serializable {
         this.isbn = isbn;
         this.prezzo = prezzo;
         this.imageString = imageString;
+        this.status = status;
+        this.idTransiction = idTransiction;
     }
 
     public Book() {
+    }
+
+    public Book(Book b, String status,Integer idTransiction){
+        this.id = b.id;
+        this.materia = b.materia;
+        this.titolo = b.titolo;
+        this.distributore = b.distributore;
+        this.scuola = b.scuola;
+        this.isbn = b.isbn;
+        this.prezzo = b.prezzo;
+        this.imageString = b.imageString;
+        this.status = status;
+        this.idTransiction = idTransiction;
     }
 
     public Integer getId() {
@@ -108,4 +129,19 @@ public class Book implements Serializable {
         this.imageString = imageString;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getIdTransiction() {
+        return idTransiction;
+    }
+
+    public void setIdTransiction(Integer idTransiction) {
+        this.idTransiction = idTransiction;
+    }
 }
