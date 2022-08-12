@@ -123,7 +123,7 @@ public class TransictionController {
         return set;
     }
 
-    @PutMapping("/chagetransictionlist")
+    @PutMapping("/changetransictionlist")
     public List<Transiction> updateTransictionMassive(@RequestBody List<Transiction> list){
 
         List<Transiction> oldList = new ArrayList<Transiction>();
@@ -136,6 +136,7 @@ public class TransictionController {
             Transiction old = new Transiction();
 
             oldList.get(i).setStatus(list.get(i).getStatus());
+            oldList.get(i).setNamePrenotation(list.get(i).getNamePrenotation());
         }
 
         transictionRepository.saveAll(oldList);
